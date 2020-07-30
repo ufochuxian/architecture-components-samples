@@ -15,6 +15,7 @@
  */
 package com.android.example.livedatabuilder
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -69,6 +70,15 @@ class LiveDataViewModel(
     companion object {
         // Real apps would use a wrapper on the result type to handle this.
         const val LOADING_STRING = "Loading..."
+    }
+
+    fun test() {
+        Log.i("test","test start")
+        viewModelScope.launch {
+            delay(3000)
+            Log.i("test","test launch")
+        }
+        Log.i("test","test end")
     }
 }
 

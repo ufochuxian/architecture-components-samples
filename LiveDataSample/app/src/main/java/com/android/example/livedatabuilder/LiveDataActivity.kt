@@ -16,11 +16,14 @@
 package com.android.example.livedatabuilder
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.lifecycleScope
 import com.android.example.livedata.R
 import com.android.example.livedata.databinding.ActivityLivedataBinding
+import kotlinx.coroutines.launch
 
 class LiveDataActivity : AppCompatActivity() {
 
@@ -40,6 +43,13 @@ class LiveDataActivity : AppCompatActivity() {
 
         // Bind ViewModel
         binding.viewmodel = viewmodel
+
+        lifecycleScope.launchWhenResumed {
+            Log.i("test","onResume")
+        }
+
+        viewmodel.test()
+
     }
 }
 
