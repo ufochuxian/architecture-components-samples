@@ -20,6 +20,7 @@ import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.android.example.livedata.R
 import com.android.example.livedata.databinding.ActivityLivedataBinding
@@ -48,8 +49,19 @@ class LiveDataActivity : AppCompatActivity() {
             Log.i("test","onResume")
         }
 
+
+        viewmodel.goFra.observe(this, Observer {
+            goToLiveDataFag()
+        } )
         viewmodel.test()
 
+    }
+
+    private fun goToLiveDataFag() {
+        supportFragmentManager.beginTransaction().apply {
+            add(R.id.root_view,LiveDataFragment.instance,LiveDataFragment.TAG)
+            commitAllowingStateLoss()
+        }
     }
 }
 

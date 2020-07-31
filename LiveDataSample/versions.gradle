@@ -63,6 +63,7 @@ versions.timber = "4.7.1"
 versions.transition = "1.3.0"
 versions.truth = "1.0.1"
 versions.work = "2.2.0"
+versions.constraintlayout = "1.1.3"
 ext.versions = versions
 
 def build_versions = [:]
@@ -215,6 +216,12 @@ work.testing = "androidx.work:work-testing:$versions.work"
 work.firebase = "androidx.work:work-firebase:$versions.work"
 work.runtime_ktx = "androidx.work:work-runtime-ktx:$versions.work"
 deps.work = work
+
+
+def constraintlayout = [:]
+constraintlayout.runtime = "androidx.constraintlayout:constraintlayout:$versions.constraintlayout"
+constraintlayout.compiler = "androidx.constraintlayout:constraintlayout:$versions.constraintlayout"
+deps.constraintlayout = constraintlayout
 
 ext.deps = deps
 

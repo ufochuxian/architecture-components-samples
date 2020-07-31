@@ -16,12 +16,7 @@
 package com.android.example.livedatabuilder
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.liveData
-import androidx.lifecycle.switchMap
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -33,6 +28,10 @@ import java.util.Date
 class LiveDataViewModel(
     private val dataSource: DataSource
 ) : ViewModel() {
+
+    var goFra : MutableLiveData<Unit> = MutableLiveData()
+
+
 
     // Exposed LiveData from a function that returns a LiveData generated with a liveData builder
     val currentTime = dataSource.getCurrentTime()
@@ -58,6 +57,10 @@ class LiveDataViewModel(
         viewModelScope.launch {
             dataSource.fetchNewData()
         }
+    }
+
+    fun gotoFra() {
+        goFra.value = null
     }
 
     // Simulates a long-running computation in a background thread
@@ -92,6 +95,8 @@ object LiveDataVMFactory : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         @Suppress("UNCHECKED_CAST")
+        //这里如果viewmodel需要带参数的话，那么使用ViewModelProviders.of() 生成viewmodel会报错，因为其内部默认会调用viewmodel不带参数的构造函数
+        //https://medium.com/koderlabs/viewmodel-with-viewmodelprovider-factory-the-creator-of-viewmodel-8fabfec1aa4f
         return LiveDataViewModel(dataSource) as T
     }
 }
