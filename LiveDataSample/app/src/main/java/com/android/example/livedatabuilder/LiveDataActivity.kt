@@ -15,6 +15,7 @@
  */
 package com.android.example.livedatabuilder
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
@@ -24,7 +25,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import com.android.example.livedata.R
 import com.android.example.livedata.databinding.ActivityLivedataBinding
-import kotlinx.coroutines.launch
 
 class LiveDataActivity : AppCompatActivity() {
 
@@ -51,17 +51,15 @@ class LiveDataActivity : AppCompatActivity() {
 
 
         viewmodel.goFra.observe(this, Observer {
-            goToLiveDataFag()
+            goToNavigationActivity()
         } )
         viewmodel.test()
 
     }
 
-    private fun goToLiveDataFag() {
-        supportFragmentManager.beginTransaction().apply {
-            add(R.id.root_view,LiveDataFragment.instance,LiveDataFragment.TAG)
-            commitAllowingStateLoss()
-        }
+    private fun goToNavigationActivity() {
+        var intent = Intent(this, NavigateActivity::class.java)
+        startActivity(intent)
     }
 }
 

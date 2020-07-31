@@ -61,6 +61,8 @@ dependencies {
     implementation deps.kotlin.stdlib
 
     implementation deps.constraintlayout.runtime
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
 
     testImplementation deps.junit
     testImplementation deps.arch_core.testing
