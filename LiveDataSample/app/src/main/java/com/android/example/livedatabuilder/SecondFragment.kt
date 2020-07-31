@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModelProvider
 import com.android.example.livedata.databinding.FragmentSecondBinding
 
@@ -25,6 +26,8 @@ class SecondFragment : BaseFragment() {
 
     private var mViewModel : SecondViewModel? = null
 
+    private var mUserInfo : User? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -39,6 +42,7 @@ class SecondFragment : BaseFragment() {
     ): View? {
         return FragmentSecondBinding.inflate(inflater, container, false).apply {
             viewmodel = mViewModel
+            user = User("小明", true)
         }.root
     }
 }

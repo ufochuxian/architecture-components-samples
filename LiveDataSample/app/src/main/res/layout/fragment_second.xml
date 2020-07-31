@@ -4,6 +4,13 @@
 
     <data>
 
+        <import
+            type="com.android.example.livedatabuilder.User" />
+
+        <variable
+            name="user"
+            type="User" />
+
         <variable
             name="viewmodel"
             type="com.android.example.livedatabuilder.SecondViewModel" />
@@ -15,6 +22,7 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="second_fragment"
@@ -24,6 +32,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/updateUserInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text='@{@string/user_name + user.name}'
+            android:onClick="@{() -> viewmodel.updateUserInfo(user)}"
+            app:layout_constraintEnd_toEndOf="@id/label"
+            app:layout_constraintStart_toStartOf="@id/label"
+            app:layout_constraintTop_toBottomOf="@id/label" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
