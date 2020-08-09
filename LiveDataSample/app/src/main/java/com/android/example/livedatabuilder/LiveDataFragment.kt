@@ -5,8 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -65,6 +63,10 @@ class LiveDataFragment : BaseFragment() {
                 goToSecondFragment()
             }
         })
+
+        mViewModel?.goToRvFragment?.observe(viewLifecycleOwner, Observer {
+            goToRvFragment()
+        })
     }
 
     private fun goToSecondFragment() {
@@ -73,6 +75,12 @@ class LiveDataFragment : BaseFragment() {
         //所以这里需要在onViewCreated()方法中调用，在onCreateView中调用，可能就会不成功了
         Navigation.findNavController(goToSecondFragment)
             .navigate(R.id.action_livedatafragment_to_secondfragment)
+    }
+
+    private fun goToRvFragment() {
+        Log.v(TAG, "[goToRvFragment]")
+        Navigation.findNavController(goToRvFragment)
+            .navigate(R.id.action_livedatafragment_to_rvFragment)
     }
 
 

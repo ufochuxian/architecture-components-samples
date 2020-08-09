@@ -6,6 +6,7 @@
 
 
     <data>
+
         <variable
             name="viewModel"
             type="com.android.example.livedatabuilder.LiveDataFragmentViewModel" />
@@ -15,22 +16,33 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorAccent"
-        >
+        android:background="@color/colorAccent">
 
 
         <TextView
             android:id="@+id/goToSecondFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="@{()-> viewModel.goToSecondFragment()}"
             android:text="跳转secondFragment"
             android:textColor="@color/light_yellow"
             android:textSize="20sp"
-            android:onClick="@{()-> viewModel.goToSecondFragment()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/goToRvFragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="goToRecyclerViewFragment"
+            android:onClick="@{() -> viewModel.goToRvFragment()}"
+            app:layout_constraintEnd_toEndOf="@id/goToSecondFragment"
+            app:layout_constraintStart_toStartOf="@id/goToSecondFragment"
+            app:layout_constraintTop_toBottomOf="@id/goToSecondFragment" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

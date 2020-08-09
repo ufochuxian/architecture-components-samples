@@ -25,8 +25,14 @@ class LiveDataFragmentViewModel : ViewModel() {
     //参考：https://juejin.im/post/6844903721831235591
     var goToSecondFraLiveData = MutableLiveData<Event<String>>()
 
+    var goToRvFragment = SingleLiveEvent<Void>()
+
 
     fun goToSecondFragment() {
         goToSecondFraLiveData.value = Event("goToSecond")
+    }
+
+    fun goToRvFragment() {
+        goToRvFragment.call()
     }
 }

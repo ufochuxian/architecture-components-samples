@@ -27,12 +27,26 @@
         <action
             android:id="@+id/action_livedatafragment_to_secondfragment"
             app:destination="@id/secondFragment" />
+
+        <action
+            android:id="@+id/action_livedatafragment_to_rvFragment"
+            app:destination="@+id/rvFragment"
+            />
+
     </fragment>
 
     <fragment
         android:id="@+id/secondFragment"
         android:name="com.android.example.livedatabuilder.SecondFragment"
         tools:layout="@layout/fragment_second">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/rvFragment"
+        android:name="com.android.example.livedatabuilder.rv.RecyclerViewFragment"
+        tools:layout="@layout/fragment_recyclerview"
+        >
 
     </fragment>
 </navigation>
